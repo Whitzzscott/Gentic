@@ -1,0 +1,298 @@
+html {
+    scroll-behavior: smooth;
+}
+
+.scroll-element {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-element.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: radial-gradient(circle, #280000, #4d0000);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ffffff;
+    overflow-x: hidden;
+    overflow-y: auto;
+    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.9);
+    animation: bodyZoom 1s ease-out;
+}
+
+@keyframes bodyZoom {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+h1 {
+    color: #ff5e5e;
+    margin: 20px 0;
+    font-size: 3em;
+    font-weight: 700;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
+    animation: flicker 1s infinite alternate, randomGlow 3s infinite ease-in-out;
+}
+
+label {
+    font-weight: 600;
+    margin-top: 15px;
+    display: block;
+    color: #ffb3b3;
+    animation: fadeIn 1s ease-out, pulseShadow 3s infinite;
+}
+
+input, textarea {
+    border: 2px solid #992929;
+    border-radius: 12px;
+    padding: 14px;
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+    font-size: 16px;
+    background-color: #3d0000;
+    color: #ffffff;
+    outline: none;
+    margin-bottom: 15px;
+    transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    animation: fadeIn 1s ease-out, pulseShadow 3s infinite;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+input:focus, textarea:focus {
+    border-color: #ff69b4;
+    box-shadow: 0 0 35px rgba(255, 105, 180, 0.9), inset 0 0 30px rgba(255, 105, 180, 0.5);
+    transform: scale(1.05) perspective(1000px) rotateX(1deg) rotateY(1deg);
+}
+
+input:hover, textarea:hover {
+    box-shadow: 0 30px 60px rgba(255, 105, 180, 0.7), inset 0 0 30px rgba(255, 105, 180, 0.4);
+    transform: scale(1.03) perspective(1000px) rotateX(1deg) rotateY(1deg);
+}
+
+textarea {
+    resize: vertical;
+}
+
+button {
+    background: linear-gradient(145deg, #ff5e5e, #ff8585);
+    color: #280000;
+    border: none;
+    border-radius: 12px;
+    padding: 16px 32px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: all 0.3s ease-in-out;
+    animation: buttonPulse 1.5s infinite alternate, buttonGlow 3s infinite;
+    outline: none;
+    box-shadow: 0 20px 40px rgba(255, 94, 94, 0.6), 0 0 35px rgba(255, 94, 94, 0.5) inset;
+    text-transform: uppercase;
+}
+
+button:hover {
+    background: linear-gradient(145deg, #ff8585, #ff5e5e);
+    transform: translateY(-8px) scale(1.1);
+    box-shadow: 0 30px 60px rgba(255, 94, 94, 0.8), 0 0 40px rgba(255, 94, 94, 0.6) inset;
+}
+
+button:active {
+    transform: translateY(0) scale(1);
+}
+
+#result {
+    background: linear-gradient(145deg, #ffe6e6, #ffcccc);
+    color: #330000;
+    border: 2px solid #ff9999;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), inset 0 0 30px rgba(0, 0, 0, 0.5);
+    font-size: 16px;
+    white-space: pre-wrap;
+    opacity: 1;
+    transform: translateY(0);
+    transition: box-shadow 0.3s, transform 0.3s;
+    user-select: text;
+}
+
+#result:hover {
+    box-shadow: 0 35px 80px rgba(255, 105, 180, 0.8), inset 0 0 35px rgba(255, 105, 180, 0.6);
+    transform: scale(1.05) translateY(-5px);
+    animation: deepLighting 1s ease-in-out;
+}
+
+.toggle-button {
+    padding: 10px 15px;
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    margin-top: 10px;
+    font-size: 16px;
+    box-shadow: 0 10px 20px rgba(217, 83, 79, 0.7);
+    animation: pulse 1.5s infinite, glow 1.5s infinite alternate;
+}
+
+.toggle-button:hover {
+    background-color: #c9302c;
+    box-shadow: 0 15px 25px rgba(217, 83, 79, 0.9);
+    animation: pulse 1.5s infinite, glowHover 1.5s infinite alternate;
+}
+
+.toggle-button:active {
+    background-color: #a94442;
+    box-shadow: 0 12px 20px rgba(217, 83, 79, 0.8);
+    animation: none;
+}
+
+.danger-zone {
+    padding: 20px;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.danger-zone h2 {
+    color: #721c24;
+}
+
+.danger-zone input, .danger-zone textarea {
+    width: 95%;
+    padding: 8px;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.5s;
+}
+
+.popup-content {
+    background: #330000;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(0, 0, 0, 0.6);
+    animation: deepLighting 1s infinite alternate;
+    position: relative;
+}
+
+.popup h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+}
+
+.popup p {
+    margin: 10px 0;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.close-button:hover {
+    color: #ff0000;
+    transform: scale(1.2);
+}
+
+.hidden {
+    display: none;
+}
+
+.restart-button {
+    padding: 14px 28px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 20px;
+}
+
+.restart-button:hover {
+    background-color: #4cae4c;
+    transform: scale(1.05);
+}
+
+.restart-button:active {
+    background-color: #449d44;
+    transform: scale(1);
+}
+
+@keyframes deepLighting {
+    0%, 100% { filter: brightness(0.8); }
+    50% { filter: brightness(1.2); }
+}
+
+@keyframes flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
+    20%, 24%, 55% { opacity: 0.2; }
+}
+
+@keyframes pulseShadow {
+    0%, 100% { text-shadow: 0 0 10px rgba(255, 105, 180, 0.8); }
+    50% { text-shadow: 0 0 20px rgba(255, 105, 180, 1); }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes buttonPulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); }
+}
+
+@keyframes buttonGlow {
+    0% { box-shadow: 0 0 15px rgba(255, 94, 94, 0.7); }
+    100% { box-shadow: 0 0 25px rgba(255, 94, 94, 1); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+@keyframes glow {
+    0% { box-shadow: 0 0 5px #d9534f; }
+    100% { box-shadow: 0 0 20px #d9534f; }
+}
+
+@keyframes glowHover {
+    0% { box-shadow: 0 0 10px #c9302c; }
+    100% { box-shadow: 0 0 30px #c9302c; }
+}
